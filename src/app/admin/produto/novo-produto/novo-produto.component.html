@@ -1,0 +1,46 @@
+<form #produtoForm="ngForm" (ngSubmit)="salvarProduto(produtoForm);">
+
+  <div class="form-group">
+    <div *ngIf="produto.id != 0">
+      <label>Identificador:</label>
+      <input type="text" class="form-control" name="id" id="id" [(ngModel)]="produto.id" #id="ngModel" readonly>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="nome" class="form-control-label">Nome do Produto:</label>
+    <input required name="nome" id="nome " minlength="3" maxlength="30" placeholder="Nome do Produto" type="text" class="form-control"
+      [(ngModel)]="produto.nome" #nome="ngModel" autocomplete="off">
+
+    <!-- <div [hidden]="nome.valid || nome.pristine">
+      <span class="text-danger">Campo de preenchimento obrigatório.</span>
+    </div> -->
+
+  </div>
+
+  <div class="form-group">
+    <label class="form-control-label">Preço: </label>
+    <input minlength="1" maxlength="6" id="preco" name="preco" required placeholder="Preço" type="text" class="form-control"
+      [(ngModel)]="produto.preco" #preco="ngModel" autocomplete="off">
+  </div>
+
+  <div class="form-group">
+    <label class="form-control-label">Descrição</label>
+    <input minlength="5" maxlength="80" id="descricao" name="descricao" required placeholder="Descrição" type="text" class="form-control"
+      [(ngModel)]="produto.descricao" #descricao="ngModel" autocomplete="off">
+  </div>
+
+  <div class="form-group">
+    <label>Categorias:</label>
+    <select required class="form-control" name="categoria" [(ngModel)]="produto.categoria" #categoria="ngModel">
+      <option>Selecione um opção</option>
+      <option *ngFor="let categoria of categorias" [ngValue]="categoria" selected="categoria.id === produto.categoria.id">{{categoria.nome}}</option>
+    </select>
+  </div>
+
+  <div class="pull-right">
+    <button routerLink="/produto" class="btn btn-default">Voltar</button>
+    <button type="submit" class="btn btn-success">Salvar</button>
+  </div>
+
+</form>

@@ -1,0 +1,39 @@
+<h3>Carrinho de Compras</h3>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Quantidade</th>
+                    <th>Unitario</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <!-- <tr *ngFor="let produto of produtos; let i = index"> -->
+                    <!-- <th class="{{produto.id}}" scope="row">{{produto.id}}</th> -->
+                    <td>Produto 1</td>
+                    <td>
+                        <div>
+                            <button type="button" class="btn btn-success" style="width: 40px;">+</button>
+                            <input type="text" style="width: 40px;" placeholder="2">
+                            <button type="button" class="btn btn-danger" style="width: 40px;">-</button>
+                        </div>
+                    </td>
+                    <td>R$ {{produto.preco}}</td>
+                    <td>R$ TOTAL</td>
+                </tr>
+
+                <ng-template #template>
+                    <div class="modal-body text-center">
+                        <p>Realmente deseja excluir {{selectProduto.nome}}?</p>
+                        <button type="button" class="btn btn-default" (click)="deleteProdutoCarrino(selectProduto.id, i)">Yes</button>
+                        <button type="button" class="btn btn-primary" (click)="hideModal()">No</button>
+                    </div>
+                </ng-template>
+            </tbody>
+        </table>
+    </div>
+</div>

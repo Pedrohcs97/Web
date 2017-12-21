@@ -1,0 +1,28 @@
+<button routerLink="../nova-categoria" class="button btn btn-primary">Nova Categoria</button>
+
+<div ng-if="mostrarProdutos" class="row">
+  <div class="col-md-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nome</th>
+          <th>Ações</th>         
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let categoria of categorias">
+          <th scope="row">{{categoria.id}}</th>
+          <td>{{categoria.nome}}</td>
+          <td>
+              <button class="btn btn-success glyphicon glyphicon-pencil"  [routerLink]="['/alterar-categoria', categoria.id]"> </button>
+              |
+              <button class="btn btn-danger glyphicon glyphicon-trash" (click)="deleteCategoria(categoria.id)"> </button>
+              |
+              <button class="btn btn-primary glyphicon glyphicon-info-sign" [routerLink]="['/visualizar-categoria/', categoria.id]"> </button>
+          </td>
+        </tr>
+      </tbody> 
+    </table>
+  </div>
+</div>

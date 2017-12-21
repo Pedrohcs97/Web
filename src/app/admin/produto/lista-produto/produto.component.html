@@ -1,0 +1,46 @@
+<button routerLink="../novo-produto" class="button btn btn-primary">Novo Produto</button>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nome</th>
+          <th>Preço</th>
+          <th>Categoria</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produto of produtos; let i = index">
+          <th class="{{produto.id}}" scope="row">{{produto.id}}</th>
+          <td>{{produto.nome}}</td>
+          <td>R$ {{produto.preco}}</td>
+          <td>
+              <span *ngIf="produto.categoria !== null">{{ produto.categoria.nome }}</span>
+              <span *ngIf="produto.categoria === null">Não informado</span>
+          <td>
+            <button class="btn btn-success glyphicon glyphicon-pencil"  [routerLink]="['/alterar-produto', produto.id]"> </button>
+            |
+            <button class="btn btn-danger glyphicon glyphicon-trash" (click)="openModal(template, produto, i)"> </button>
+            |
+            <button class="btn btn-primary glyphicon glyphicon-info-sign" [routerLink]="['/visualizar-produto/', produto.id]"> </button>
+            |
+            <button class="btn btn-warning glyphicon glyphicon-info-sign" value="comprar" (click)="adicionarProduto(produto)"></button>
+          </td>
+        </tr>
+        
+        <ng-template #template>
+          <div class="modal-body text-center">
+            <p>Realmente deseja excluir {{selectProduto.nome}}?</p>
+            <button type="button" class="btn btn-default" (click)="deleteProduto(selectProduto.id, i)" >Yes</button>
+            <button type="button" class="btn btn-primary" (click)="hideModal()" >No</button>
+          </div>
+        </ng-template>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- <div ng-if="!mostrarProdutos">
+  <h3>Lista de produtos vazia!</h3>
+</div> -->

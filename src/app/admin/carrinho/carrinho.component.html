@@ -1,0 +1,10 @@
+<div class="pull-right">
+    <div class="col-4 ">
+        <i class="carrinho fa fa-shopping-cart" aria-hidden="true"></i>
+    </div>
+    <div class="col-8">
+        <a routerLink="../listar-carrinho"><h4>Meu Carrinho</h4></a>
+        <span *ngIf="this.produtos.length == 0">Carrinho Vazio</span>
+        <span *ngIf="this.produtos.length > 0">{{ this.produtos.length }} Produtos</span>
+    </div>
+</div>
